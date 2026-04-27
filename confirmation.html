@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmed — Groom & Bride</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Cinzel:wght@400;500;600&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+    :root {
+      --cream: #f5ede0;
+      --gold: #8b6234;
+      --gold-light: #c4a06a;
+      --gold-deep: #7a5228;
+      --text: #5a3e20;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e8ddd0 0%, #ddd0c0 50%, #e4d8c8 100%);
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text);
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(245, 237, 224, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 160, 106, 0.3);
+    }
+
+    .nav-monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-deep);
+    }
+
+    /* PETALS */
+    .petal {
+      position: fixed;
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: petalFall linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes petalFall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.5;
+      }
+
+      90% {
+        opacity: 0.25;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* PAGE */
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* CARD */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(160deg, #f8f0e6 0%, #f0e4d0 40%, #eadcc8 70%, #f2ebe0 100%);
+      border-radius: 2px;
+      overflow: hidden;
+      padding: 70px 50px 56px;
+      box-shadow: 0 30px 80px rgba(100, 70, 40, 0.22), 0 0 0 1px rgba(196, 160, 106, 0.2);
+      animation: fadeUp 0.9s 0.2s both;
+      text-align: center;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 280px 200px at 15% 25%, rgba(180, 140, 100, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 200px 280px at 85% 60%, rgba(160, 120, 80, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* FLORAL CORNERS */
+    .floral {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+    }
+
+    .floral-tl {
+      top: -12px;
+      left: -12px;
+    }
+
+    .floral-tr {
+      top: -12px;
+      right: -12px;
+      transform: scaleX(-1);
+    }
+
+    .floral-bl {
+      bottom: -12px;
+      left: -12px;
+    }
+
+    .floral-br {
+      bottom: -12px;
+      right: -12px;
+      transform: scaleX(-1);
+    }
+
+    /* CONTENT */
+    .inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* CHECKMARK */
+    .check-ring {
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(196, 160, 106, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: rgba(255, 248, 240, 0.5);
+      animation: popIn 0.7s 0.5s both;
+    }
+
+    .check-ring svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.4);
+        opacity: 0;
+      }
+
+      70% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* HEADINGS */
+    .heading-main {
+      font-family: 'Great Vibes', cursive;
+      font-size: 64px;
+      color: var(--gold-deep);
+      line-height: 1;
+      animation: fadeUp 0.9s 0.4s both;
+      text-shadow: 0 2px 8px rgba(122, 82, 40, 0.1);
+    }
+
+    .heading-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 10px;
+      line-height: 1.7;
+      animation: fadeUp 0.9s 0.55s both;
+    }
+
+    .guest-name-display {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: var(--gold-deep);
+      animation: fadeUp 0.9s 0.65s both;
+      margin-top: 4px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      margin: 20px auto;
+    }
+
+    /* DATE + DETAILS BLOCK */
+    .details-block {
+      margin: 0 auto;
+      padding: 20px 24px;
+      border: 1px solid rgba(196, 160, 106, 0.3);
+      background: rgba(255, 248, 240, 0.35);
+      border-radius: 2px;
+      animation: fadeUp 0.9s 0.7s both;
+    }
+
+    .details-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 4px;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+
+    .details-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .details-icon {
+      color: var(--gold-light);
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .details-text {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* GUEST SUMMARY */
+    .guest-summary {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--gold-light);
+      margin-top: 10px;
+    }
+
+    /* COUNTDOWN */
+    .countdown-wrap {
+      margin: 24px auto 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(196, 160, 106, 0.3);
+      background: rgba(255, 248, 240, 0.35);
+      border-radius: 2px;
+      animation: fadeUp 0.9s 0.8s both;
+    }
+
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 4px;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+
+    .countdown-grid {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .countdown-num {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--gold-deep);
+      line-height: 1;
+      min-width: 52px;
+      text-align: center;
+      background: rgba(255, 248, 240, 0.6);
+      border: 1px solid rgba(196, 160, 106, 0.25);
+      padding: 8px 4px;
+      border-radius: 2px;
+    }
+
+    .countdown-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 7px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+    }
+
+    .countdown-colon {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+    }
+
+    /* BUTTONS */
+    .buttons-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+      animation: fadeUp 0.9s 0.9s both;
+    }
+
+    .btn-location {
+      display: block;
+      padding: 15px 20px;
+      background: linear-gradient(135deg, #8b6234, #a07240);
+      color: #fdf5e8;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      transition: all 0.3s;
+      border-radius: 1px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(139, 98, 52, 0.28);
+      text-align: center;
+    }
+
+    .btn-location:hover {
+      background: linear-gradient(135deg, #7a5228, #8b6234);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(139, 98, 52, 0.38);
+    }
+
+    .btn-edit {
+      display: block;
+      padding: 14px 20px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(196, 160, 106, 0.5);
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      transition: all 0.3s;
+      border-radius: 1px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-edit:hover {
+      background: rgba(196, 160, 106, 0.08);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .inshallah-bottom {
+      font-size: 26px;
+      color: var(--gold-light);
+      margin-top: 20px;
+      font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+      animation: fadeUp 0.9s 1.0s both;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(139, 98, 52, 0.5);
+      margin-top: 20px;
+    }
+
+    /* AUDIO PLAYER */
+    .audio-bar {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 237, 224, 0.95);
+      border: 1px solid rgba(196, 160, 106, 0.4);
+      padding: 10px 16px;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(100, 70, 40, 0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .audio-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .audio-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(196, 160, 106, 0.5);
+      background: rgba(139, 98, 52, 0.08);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 14px;
+      transition: all 0.25s;
+      flex-shrink: 0;
+    }
+
+    .audio-btn:hover {
+      background: rgba(139, 98, 52, 0.18);
+      transform: scale(1.05);
+    }
+
+    .audio-wave {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 20px;
+    }
+
+    .audio-wave span {
+      width: 3px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      animation: wave 1s ease-in-out infinite;
+    }
+
+    .audio-wave span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .audio-wave span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .audio-wave span:nth-child(4) {
+      animation-delay: 0.45s;
+    }
+
+    .audio-wave.paused span {
+      animation-play-state: paused;
+      height: 4px !important;
+    }
+
+    @keyframes wave {
+
+      0%,
+      100% {
+        height: 6px;
+      }
+
+      50% {
+        height: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 56px 24px 44px;
+      }
+
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .heading-main {
+        font-size: 52px;
+      }
+
+      .floral {
+        width: 160px;
+        height: 160px;
+      }
+
+      .countdown-num {
+        font-size: 22px;
+        min-width: 44px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND NASHEED -->
+  <!-- ⬇️ REPLACE THE src BELOW WITH YOUR NASHEED .mp3 URL -->
+  <audio id="nasheed" loop preload="auto">
+    <source src="song\background.mp4" type="audio/mpeg">
+  </audio>
+
+  <!-- AUDIO PLAYER BAR -->
+  <div class="audio-bar">
+    <div class="audio-wave" id="audioWave">
+      <span style="height:10px"></span>
+      <span style="height:16px"></span>
+      <span style="height:8px"></span>
+      <span style="height:14px"></span>
+    </div>
+    <div class="audio-label">NASHEED</div>
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">▶</button>
+  </div>
+
+  <!-- Petals (deferred to avoid blocking render) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const colors = ['#e8c8a8', '#d4a880', '#c49060', '#f0d8b8', '#ddb898'];
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.style.cssText = `
+        left: ${Math.random() * 100}vw;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        animation-duration: ${5 + Math.random() * 9}s;
+        animation-delay: ${Math.random() * 8}s;
+        width: ${7 + Math.random() * 10}px;
+        height: ${10 + Math.random() * 13}px;
+      `;
+        frag.appendChild(p);
+      }
+      document.body.prepend(frag);
+    });
+  </script>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-monogram">G &amp; B</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li><a href="confirmation.html">DETAILS</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <div class="card">
+
+      <!-- Floral TL -->
+      <div class="floral floral-tl">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="70" cy="80" rx="33" ry="29" fill="#f2e6d8" opacity="0.88" />
+          <ellipse cx="70" cy="80" rx="23" ry="20" fill="#ede0cc" opacity="0.93" />
+          <ellipse cx="70" cy="80" rx="14" ry="11" fill="#e6d5be" />
+          <ellipse cx="45" cy="68" rx="15" ry="9" fill="#f0e2d0" transform="rotate(-30,45,68)" opacity="0.83" />
+          <ellipse cx="97" cy="60" rx="14" ry="8" fill="#f2e4d4" transform="rotate(20,97,60)" opacity="0.78" />
+          <circle cx="143" cy="42" r="19" fill="#c4845a" opacity="0.70" />
+          <circle cx="143" cy="42" r="12" fill="#b87040" opacity="0.86" />
+          <circle cx="143" cy="42" r="6" fill="#8b4a20" />
+          <ellipse cx="120" cy="30" rx="12" ry="7" fill="#c47850" transform="rotate(-25,120,30)" opacity="0.76" />
+          <ellipse cx="164" cy="30" rx="12" ry="7" fill="#c47850" transform="rotate(25,164,30)" opacity="0.76" />
+          <ellipse cx="116" cy="80" rx="10" ry="14" fill="#ddb898" opacity="0.71" transform="rotate(10,116,80)" />
+          <ellipse cx="116" cy="80" rx="6" ry="8" fill="#c89878" opacity="0.86" transform="rotate(10,116,80)" />
+          <ellipse cx="34" cy="117" rx="20" ry="7" fill="#9aab8a" transform="rotate(-40,34,117)" opacity="0.66" />
+          <ellipse cx="22" cy="98" rx="17" ry="5" fill="#b0a880" transform="rotate(-60,22,98)" opacity="0.61" />
+          <ellipse cx="90" cy="126" rx="20" ry="7" fill="#8a9e78" transform="rotate(15,90,126)" opacity="0.61" />
+          <ellipse cx="52" cy="136" rx="18" ry="5" fill="#7a5030" transform="rotate(-50,52,136)" opacity="0.66" />
+          <ellipse cx="16" cy="72" rx="15" ry="5" fill="#8a6040" transform="rotate(-70,16,72)" opacity="0.61" />
+          <circle cx="102" cy="108" r="4" fill="#c48060" opacity="0.76" />
+          <circle cx="112" cy="99" r="3.2" fill="#b87050" opacity="0.71" />
+        </svg>
+      </div>
+      <div class="floral floral-tr">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="70" cy="80" rx="33" ry="29" fill="#f2e6d8" opacity="0.88" />
+          <ellipse cx="70" cy="80" rx="23" ry="20" fill="#ede0cc" opacity="0.93" />
+          <ellipse cx="70" cy="80" rx="14" ry="11" fill="#e6d5be" />
+          <ellipse cx="45" cy="68" rx="15" ry="9" fill="#f0e2d0" transform="rotate(-30,45,68)" opacity="0.83" />
+          <ellipse cx="97" cy="60" rx="14" ry="8" fill="#f2e4d4" transform="rotate(20,97,60)" opacity="0.78" />
+          <circle cx="143" cy="42" r="19" fill="#c4845a" opacity="0.70" />
+          <circle cx="143" cy="42" r="12" fill="#b87040" opacity="0.86" />
+          <circle cx="143" cy="42" r="6" fill="#8b4a20" />
+          <ellipse cx="120" cy="30" rx="12" ry="7" fill="#c47850" transform="rotate(-25,120,30)" opacity="0.76" />
+          <ellipse cx="164" cy="30" rx="12" ry="7" fill="#c47850" transform="rotate(25,164,30)" opacity="0.76" />
+          <ellipse cx="116" cy="80" rx="10" ry="14" fill="#ddb898" opacity="0.71" transform="rotate(10,116,80)" />
+          <ellipse cx="116" cy="80" rx="6" ry="8" fill="#c89878" opacity="0.86" transform="rotate(10,116,80)" />
+          <ellipse cx="34" cy="117" rx="20" ry="7" fill="#9aab8a" transform="rotate(-40,34,117)" opacity="0.66" />
+          <ellipse cx="22" cy="98" rx="17" ry="5" fill="#b0a880" transform="rotate(-60,22,98)" opacity="0.61" />
+          <ellipse cx="90" cy="126" rx="20" ry="7" fill="#8a9e78" transform="rotate(15,90,126)" opacity="0.61" />
+          <ellipse cx="52" cy="136" rx="18" ry="5" fill="#7a5030" transform="rotate(-50,52,136)" opacity="0.66" />
+          <circle cx="102" cy="108" r="4" fill="#c48060" opacity="0.76" />
+          <circle cx="112" cy="99" r="3.2" fill="#b87050" opacity="0.71" />
+        </svg>
+      </div>
+      <div class="floral floral-bl">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="62" cy="128" rx="35" ry="31" fill="#f5ead8" opacity="0.88" />
+          <ellipse cx="62" cy="128" rx="25" ry="21" fill="#f0e0c8" opacity="0.93" />
+          <ellipse cx="62" cy="128" rx="16" ry="12" fill="#e8d4b8" />
+          <ellipse cx="36" cy="114" rx="17" ry="9" fill="#f2e4d2" transform="rotate(-25,36,114)" opacity="0.78" />
+          <ellipse cx="90" cy="112" rx="16" ry="9" fill="#f0dfc8" transform="rotate(25,90,112)" opacity="0.78" />
+          <circle cx="144" cy="144" r="21" fill="#c87848" opacity="0.66" />
+          <circle cx="144" cy="144" r="14" fill="#b86030" opacity="0.81" />
+          <circle cx="144" cy="144" r="7" fill="#8b4020" />
+          <ellipse cx="121" cy="132" rx="12" ry="7" fill="#c47040" transform="rotate(-20,121,132)" opacity="0.71" />
+          <ellipse cx="166" cy="132" rx="12" ry="7" fill="#c47040" transform="rotate(20,166,132)" opacity="0.71" />
+          <ellipse cx="112" cy="156" rx="11" ry="16" fill="#e8c0a0" opacity="0.71" />
+          <ellipse cx="112" cy="156" rx="7" ry="9" fill="#d8a880" opacity="0.86" />
+          <circle cx="34" cy="172" r="14" fill="#f5ece0" opacity="0.81" />
+          <circle cx="34" cy="172" r="8" fill="#eedfd0" opacity="0.86" />
+          <ellipse cx="88" cy="98" rx="20" ry="7" fill="#9aab8a" transform="rotate(-35,88,98)" opacity="0.66" />
+          <ellipse cx="124" cy="108" rx="17" ry="6" fill="#8a9e78" transform="rotate(20,124,108)" opacity="0.61" />
+          <ellipse cx="70" cy="180" rx="19" ry="6" fill="#9aab8a" transform="rotate(-20,70,180)" opacity="0.61" />
+          <ellipse cx="25" cy="148" rx="19" ry="6" fill="#7a5030" transform="rotate(-55,25,148)" opacity="0.66" />
+          <ellipse cx="97" cy="180" rx="17" ry="5" fill="#8a6040" transform="rotate(-10,97,180)" opacity="0.61" />
+          <circle cx="138" cy="174" r="4" fill="#c48060" opacity="0.76" />
+          <circle cx="149" cy="167" r="3.2" fill="#b87050" opacity="0.71" />
+        </svg>
+      </div>
+      <div class="floral floral-br">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="62" cy="128" rx="35" ry="31" fill="#f5ead8" opacity="0.88" />
+          <ellipse cx="62" cy="128" rx="25" ry="21" fill="#f0e0c8" opacity="0.93" />
+          <ellipse cx="62" cy="128" rx="16" ry="12" fill="#e8d4b8" />
+          <ellipse cx="36" cy="114" rx="17" ry="9" fill="#f2e4d2" transform="rotate(-25,36,114)" opacity="0.78" />
+          <ellipse cx="90" cy="112" rx="16" ry="9" fill="#f0dfc8" transform="rotate(25,90,112)" opacity="0.78" />
+          <circle cx="144" cy="144" r="21" fill="#c87848" opacity="0.66" />
+          <circle cx="144" cy="144" r="14" fill="#b86030" opacity="0.81" />
+          <circle cx="144" cy="144" r="7" fill="#8b4020" />
+          <ellipse cx="121" cy="132" rx="12" ry="7" fill="#c47040" transform="rotate(-20,121,132)" opacity="0.71" />
+          <ellipse cx="166" cy="132" rx="12" ry="7" fill="#c47040" transform="rotate(20,166,132)" opacity="0.71" />
+          <ellipse cx="112" cy="156" rx="11" ry="16" fill="#e8c0a0" opacity="0.71" />
+          <ellipse cx="112" cy="156" rx="7" ry="9" fill="#d8a880" opacity="0.86" />
+          <circle cx="34" cy="172" r="14" fill="#f5ece0" opacity="0.81" />
+          <circle cx="34" cy="172" r="8" fill="#eedfd0" opacity="0.86" />
+          <ellipse cx="88" cy="98" rx="20" ry="7" fill="#9aab8a" transform="rotate(-35,88,98)" opacity="0.66" />
+          <ellipse cx="124" cy="108" rx="17" ry="6" fill="#8a9e78" transform="rotate(20,124,108)" opacity="0.61" />
+          <ellipse cx="70" cy="180" rx="19" ry="6" fill="#9aab8a" transform="rotate(-20,70,180)" opacity="0.61" />
+          <ellipse cx="25" cy="148" rx="19" ry="6" fill="#7a5030" transform="rotate(-55,25,148)" opacity="0.66" />
+          <ellipse cx="97" cy="180" rx="17" ry="5" fill="#8a6040" transform="rotate(-10,97,180)" opacity="0.61" />
+          <circle cx="138" cy="174" r="4" fill="#c48060" opacity="0.76" />
+          <circle cx="149" cy="167" r="3.2" fill="#b87050" opacity="0.71" />
+        </svg>
+      </div>
+
+      <div class="inner">
+
+        <!-- Check ring -->
+        <div class="check-ring">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 16L13 23L26 9" stroke="#8b6234" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <!-- Main heading -->
+        <h1 class="heading-main">We Can't Wait!</h1>
+
+        <!-- Sub message -->
+        <p class="heading-sub">
+          Your RSVP has been received!<br>
+          We look forward to celebrating with you.
+        </p>
+
+        <!-- Guest name -->
+        <div class="guest-name-display" id="guestDisplay"></div>
+
+        <div class="divider"></div>
+
+        <!-- Event Details -->
+        <div class="details-block">
+          <div class="details-label">EVENT DETAILS</div>
+
+          <div class="details-row">
+            <span class="details-icon">🕌</span>
+            <div class="details-text">NIKAH CEREMONY</div>
+          </div>
+          <div class="details-row">
+            <span class="details-icon">📅</span>
+            <div class="details-text">SUNDAY, 18 AUGUST 2026</div>
+          </div>
+          <div class="details-row">
+            <span class="details-icon">🕕</span>
+            <div class="details-text">6:00 PM</div>
+          </div>
+          <div class="details-row">
+            <span class="details-icon">📍</span>
+            <div class="details-text">VENUE NAME<br>ADDRESS INSERTED HERE</div>
+          </div>
+
+          <div class="divider" style="margin:14px auto 10px;"></div>
+          <div class="guest-summary" id="guestSummary"></div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-wrap">
+          <div class="countdown-label">TIME UNTIL THE BIG DAY</div>
+          <div class="countdown-grid">
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-days">00</div>
+              <div class="countdown-sub">DAYS</div>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-hours">00</div>
+              <div class="countdown-sub">HRS</div>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-mins">00</div>
+              <div class="countdown-sub">MIN</div>
+            </div>
+            <div class="countdown-colon">:</div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-secs">00</div>
+              <div class="countdown-sub">SEC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-wrap">
+          <!-- ⬇️ REPLACE href WITH YOUR GOOGLE MAPS LINK -->
+          <a href="https://maps.app.goo.gl/h5WX7FXoWdrdqsZN9" target="_blank" class="btn-location">
+            📍 &nbsp; CLICK HERE FOR LOCATION
+          </a>
+          <a href="#" id="editResponseBtn" class="btn-edit">✏️ &nbsp; EDIT MY RESPONSE</a>
+        </div>
+
+        <div class="inshallah-bottom">إِنْ شَاءَ اَللَّهُ</div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>بِسْمِ اللَّهِ &nbsp;·&nbsp; GROOM & BRIDE &nbsp;·&nbsp; AUGUST 2026 &nbsp;·&nbsp; Created by Junaid
+    Cheerangan</footer>
+
+  <script>
+    // ── Save nasheed position + timestamp so resume is seamless ──
+    function saveNasheedState() {
+      const nasheed = document.getElementById('nasheed');
+      if (nasheed && !nasheed.paused) {
+        sessionStorage.setItem('nasheed_time', nasheed.currentTime);
+        sessionStorage.setItem('nasheed_saved_at', Date.now()); // for time compensation
+        sessionStorage.setItem('nasheed_playing', '1');
+      }
+    }
+
+    // Fallback: save on any unload (browser back/forward, tab close)
+    window.addEventListener('pagehide', saveNasheedState);
+
+    // ── Toggle audio play/pause ──
+    function toggleAudio() {
+      const audio = document.getElementById('nasheed');
+      const btn = document.getElementById('audioBtn');
+      const wave = document.getElementById('audioWave');
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸';
+        wave.classList.remove('paused');
+      } else {
+        audio.pause();
+        btn.textContent = '▶';
+        wave.classList.add('paused');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // ── Resolve guest ID from URL or localStorage ──
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestId = urlParams.get('id') || localStorage.getItem('rsvp_id') || '';
+
+      // ── Wire "Edit My Response" button: save audio state BEFORE navigating ──
+      const editBtn = document.getElementById('editResponseBtn');
+      if (guestId) {
+        const editHref = 'rsvp.html?id=' + guestId;
+        editBtn.href = editHref;
+        // Intercept click to save nasheed state before the page unloads
+        editBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          saveNasheedState();
+          window.location.href = editHref;
+        });
+      } else {
+        editBtn.style.display = 'none';
+      }
+
+      // ── Show guest name and count ──
+      const name = localStorage.getItem('rsvp_name') || '';
+      const count = localStorage.getItem('rsvp_count') || '1';
+      if (name) {
+        document.getElementById('guestDisplay').textContent = name;
+        document.getElementById('guestSummary').textContent =
+          `ATTENDING: ${count} ${parseInt(count) === 1 ? 'GUEST' : 'GUESTS'}`;
+      }
+
+      // ── Resume nasheed with time compensation for navigation gap ──
+      const audio = document.getElementById('nasheed');
+      audio.volume = 0.45;
+      const savedTime = parseFloat(sessionStorage.getItem('nasheed_time') || '0');
+      const savedAt = parseInt(sessionStorage.getItem('nasheed_saved_at') || '0');
+      const wasPlaying = sessionStorage.getItem('nasheed_playing') === '1';
+      sessionStorage.removeItem('nasheed_time');
+      sessionStorage.removeItem('nasheed_saved_at');
+      sessionStorage.removeItem('nasheed_playing');
+
+      if (wasPlaying && savedTime > 0) {
+        // Compensate for the milliseconds spent loading this page
+        const elapsedSec = savedAt ? (Date.now() - savedAt) / 1000 : 0;
+        audio.currentTime = Math.max(0, savedTime + elapsedSec);
+      }
+
+      audio.play().then(() => {
+        document.getElementById('audioBtn').textContent = '⏸';
+        document.getElementById('audioWave').classList.remove('paused');
+      }).catch(() => {
+        document.getElementById('audioWave').classList.add('paused');
+      });
+    });
+
+    // ── Countdown timer ──
+    function updateCountdown() {
+      const target = new Date('2026-08-18T18:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => {
+          document.getElementById(id).textContent = '00';
+        });
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+
+</html>

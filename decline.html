@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Groom & Bride</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Cinzel:wght@400;500;600&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+    :root {
+      --gold: #8b6234;
+      --gold-light: #c4a06a;
+      --gold-deep: #7a5228;
+      --text: #5a3e20;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e8ddd0 0%, #ddd0c0 50%, #e4d8c8 100%);
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(245, 237, 224, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196, 160, 106, 0.3);
+    }
+
+    .nav-monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      background: linear-gradient(160deg, #f8f0e6 0%, #f0e4d0 40%, #eadcc8 70%, #f2ebe0 100%);
+      border-radius: 2px;
+      overflow: hidden;
+      padding: 64px 44px 52px;
+      box-shadow: 0 30px 80px rgba(100, 70, 40, 0.2), 0 0 0 1px rgba(196, 160, 106, 0.2);
+      animation: fadeUp 0.9s 0.2s both;
+      text-align: center;
+    }
+
+    .floral {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .floral-tl {
+      top: -10px;
+      left: -10px;
+    }
+
+    .floral-br {
+      bottom: -10px;
+      right: -10px;
+      transform: scaleX(-1) scaleY(-1);
+    }
+
+    .inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .arabic {
+      font-size: 30px;
+      color: var(--gold);
+      font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+      line-height: 1.4;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      margin: 16px auto;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 58px;
+      color: var(--gold-deep);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .message {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .btn-reconsider {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #8b6234, #a07240);
+      color: #fdf5e8;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      border-radius: 1px;
+      box-shadow: 0 4px 18px rgba(139, 98, 52, 0.26);
+      transition: all 0.3s;
+    }
+
+    .btn-reconsider:hover {
+      background: linear-gradient(135deg, #7a5228, #8b6234);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(139, 98, 52, 0.36);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 50px 24px 40px;
+      }
+
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(139, 98, 52, 0.5);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-monogram">G &amp; B</div>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li><a href="confirmation.html">DETAILS</a></li>
+    </ul>
+  </nav>
+
+  <div class="card">
+
+    <div class="floral floral-tl">
+      <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="62" cy="72" rx="30" ry="26" fill="#f2e6d8" opacity="0.88" />
+        <ellipse cx="62" cy="72" rx="21" ry="18" fill="#ede0cc" opacity="0.93" />
+        <ellipse cx="62" cy="72" rx="13" ry="10" fill="#e6d5be" />
+        <ellipse cx="40" cy="62" rx="14" ry="8" fill="#f0e2d0" transform="rotate(-30,40,62)" opacity="0.83" />
+        <ellipse cx="86" cy="54" rx="12" ry="7" fill="#f2e4d4" transform="rotate(20,86,54)" opacity="0.78" />
+        <circle cx="128" cy="38" r="17" fill="#c4845a" opacity="0.70" />
+        <circle cx="128" cy="38" r="10" fill="#b87040" opacity="0.86" />
+        <circle cx="128" cy="38" r="5" fill="#8b4a20" />
+        <ellipse cx="30" cy="105" rx="18" ry="6" fill="#9aab8a" transform="rotate(-40,30,105)" opacity="0.66" />
+        <ellipse cx="80" cy="112" rx="18" ry="6" fill="#8a9e78" transform="rotate(15,80,112)" opacity="0.61" />
+        <ellipse cx="46" cy="120" rx="16" ry="5" fill="#7a5030" transform="rotate(-50,46,120)" opacity="0.66" />
+      </svg>
+    </div>
+    <div class="floral floral-br">
+      <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="62" cy="72" rx="30" ry="26" fill="#f2e6d8" opacity="0.88" />
+        <ellipse cx="62" cy="72" rx="21" ry="18" fill="#ede0cc" opacity="0.93" />
+        <ellipse cx="62" cy="72" rx="13" ry="10" fill="#e6d5be" />
+        <ellipse cx="40" cy="62" rx="14" ry="8" fill="#f0e2d0" transform="rotate(-30,40,62)" opacity="0.83" />
+        <circle cx="128" cy="38" r="17" fill="#c4845a" opacity="0.70" />
+        <circle cx="128" cy="38" r="10" fill="#b87040" opacity="0.86" />
+        <circle cx="128" cy="38" r="5" fill="#8b4a20" />
+        <ellipse cx="30" cy="105" rx="18" ry="6" fill="#9aab8a" transform="rotate(-40,30,105)" opacity="0.66" />
+        <ellipse cx="80" cy="112" rx="18" ry="6" fill="#8a9e78" transform="rotate(15,80,112)" opacity="0.61" />
+        <ellipse cx="46" cy="120" rx="16" ry="5" fill="#7a5030" transform="rotate(-50,46,120)" opacity="0.66" />
+      </svg>
+    </div>
+
+    <div class="inner">
+      <div class="arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
+      <div class="divider"></div>
+      <h1>Thank You</h1>
+      <p class="message">
+        We're sorry you won't be able to join us.<br>
+        Your kind thoughts and prayers<br>
+        mean the world to us.
+      </p>
+      <a href="#" id="reconsiderBtn" class="btn-reconsider">CHANGED YOUR MIND? RSVP HERE</a>
+    </div>
+  </div>
+
+  <footer>بِسْمِ اللَّهِ &nbsp;·&nbsp; GROOM & BRIDE &nbsp;·&nbsp; AUGUST 2026 &nbsp;·&nbsp; Created by Junaid
+    Cheerangan</footer>
+
+  <script>
+    // Same API URL used across all pages
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwTCXRkaZeA7nwmHtRysG72jGh0_v-BcKwe9w4G-tharYbMtjU3Xs4IQCMdwxUhuLORFg/exec';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestId = urlParams.get('id') || localStorage.getItem('rsvp_id') || '';
+
+      // Always wire the "Changed your mind?" button with the correct ID
+      const btn = document.getElementById('reconsiderBtn');
+      btn.href = guestId ? ('rsvp.html?id=' + guestId) : 'rsvp.html';
+
+      // ── Record the decline in Google Sheets ──
+      // This handles TWO cases:
+      //   1. Guest came from index.html "btn-no" → API not called yet → call it now
+      //   2. Guest came from rsvp.html "decline" button → API already called → calling again is safe (idempotent)
+      if (guestId) {
+        // Save ID so other pages can use it
+        localStorage.setItem('rsvp_id', guestId);
+
+        // Fire-and-forget — don't block the page render
+        fetch(API_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'submitRSVP',
+            id: guestId,
+            attending: false,
+            guestsCount: 0
+          })
+        }).catch(() => { /* silent fail — page still works */ });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
